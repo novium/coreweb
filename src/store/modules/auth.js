@@ -1,22 +1,22 @@
 import api from '../api/api';
+import axios from 'axios';
 
 const state = {
-  authorization: {},
+  token: undefined
 };
 
 const getters = {
-
 };
 
 const actions = {
-  newAuthorization(context, authorization) {
-    context.commit('setAuthorization', authorization.authorization);
-  },
+  newAuthorization(context, token) {
+    context.commit('setAuthorization', token);
+  }
 };
 
 const mutations = {
-  setAuthorization(state, authorization) {
-    state.authorization = authorization;
+  setAuthorization(state, token) {
+    state.token = token;
   },
 };
 

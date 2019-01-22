@@ -9,14 +9,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
    methods: {
     authenticate: function (provider) {
-      let t = this;
-      this.$auth.authenticate(provider).then(function (authorization) {
-        t.$store.dispatch({type: 'auth/newAuthorization', 
-          authorization: authorization.data});
-      });
+      this.$store.dispatch('authenticate', provider);
     }
   }   
 };

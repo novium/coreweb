@@ -1,13 +1,13 @@
 <template>
     <div class="">
-        <div class="row">
+        <!--<div class="row">
             <div class="form-group col-md-4 offset-md-4">
                 <p>Login</p>
                 <input type="text" placeholder="email" aria-label="email" class="form-control">
                 <button class="form-control btn-primary">login</button>
                 <button @click="authenticate('oauth2')">auth core</button>
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -15,9 +15,11 @@
 export default {
    methods: {
     authenticate: function (provider) {
-      this.$auth.authenticate(provider).then(function () {
+      let this_ = this;
+      this.$auth.authenticate(provider).then(function (res) {
         // Execute application logic after successful social authentication
-      })
+        this_.$store.dispatch('auth/newAuthorization', this_.$auth.getToken());
+      });
     }
   }   
 };

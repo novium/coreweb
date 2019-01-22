@@ -1,4 +1,5 @@
 import api from '../api/api';
+import axios from '../api/api';
 
 const state = {
   all: [],
@@ -10,7 +11,7 @@ const getters = {
 
 const actions = {
   getAllClients(context) {
-    return api.get('http://localhost:4001/api/oauth/list')
+    return axios.get('http://localhost:4001/api/oauth/list')
       .then(response => context.commit('setOauthClients', response))
       .catch(error => console.log(error));
   },
